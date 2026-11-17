@@ -1,0 +1,60 @@
+body:has(.panel)::after { display: none; }
+.panel { min-height: 100vh; display: grid; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.5; }
+@media (min-width: 960px) { .panel { grid-template-columns: 240px 1fr; } }
+.panel-nav { background: var(--grafito); border-right: 1px solid var(--linea); padding: 18px; display: flex; flex-direction: column; gap: 4px; }
+@media (max-width: 959px) { .panel-nav { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--linea); position: sticky; top: 0; z-index: 10; } }
+.panel-nav .titulo { font-family: var(--display); letter-spacing: .2em; font-size: 12px; text-transform: uppercase; padding: 8px 10px 16px; white-space: nowrap; }
+@media (max-width: 959px) { .panel-nav .titulo { display: none; } }
+.panel-nav a, .panel-nav button { display: block; padding: 9px 12px; border-radius: 8px; white-space: nowrap; color: var(--hueso); opacity: .8; text-align: left; font-size: 15px; }
+.panel-nav a:hover, .panel-nav a.on { background: color-mix(in srgb, var(--ambar) 16%, transparent); opacity: 1; }
+.panel-nav .separar { margin-top: auto; }
+.panel-main { padding: clamp(18px, 4vw, 40px); max-width: 1100px; width: 100%; }
+.panel h1 { font-size: 28px; font-weight: 600; margin-bottom: 6px; font-family: inherit; }
+.panel h2 { font-size: 19px; font-weight: 600; margin: 0 0 12px; }
+.panel .ayuda { color: var(--humo); font-size: 14px; margin-bottom: 20px; max-width: 70ch; }
+.tarjeta { background: var(--grafito); border: 1px solid var(--linea); border-radius: 12px; padding: 18px; margin-bottom: 18px; }
+.campo { display: block; margin-bottom: 14px; }
+.campo > span { display: block; font-size: 13px; color: var(--humo); margin-bottom: 5px; }
+.panel input[type=text], .panel input[type=url], .panel input[type=email], .panel input[type=password], .panel input[type=number], .panel input[type=date], .panel input[type=datetime-local], .panel select, .panel textarea {
+  width: 100%; background: var(--noir); color: var(--hueso); border: 1px solid var(--linea); border-radius: 8px; padding: 10px 12px; font: inherit; font-size: 16px; }
+.panel textarea { min-height: 120px; resize: vertical; line-height: 1.55; }
+.panel textarea.grande { min-height: 380px; font-family: ui-monospace, monospace; font-size: 15px; }
+.panel input:focus, .panel select:focus, .panel textarea:focus { outline: 2px solid var(--ambar); outline-offset: 1px; }
+.panel input[type=color] { width: 48px; height: 40px; border: 1px solid var(--linea); border-radius: 8px; background: none; padding: 2px; cursor: pointer; }
+.panel input[type=range] { width: 100%; accent-color: var(--ambar); }
+.panel input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--ambar); vertical-align: middle; }
+.rejilla { display: grid; gap: 14px; }
+@media (min-width: 700px) { .rejilla.dos { grid-template-columns: 1fr 1fr; } .rejilla.tres { grid-template-columns: repeat(3, 1fr); } }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 15px; background: var(--ambar); color: var(--noir); border: 0; cursor: pointer; }
+.btn.sec { background: transparent; color: var(--hueso); border: 1px solid var(--linea); }
+.btn.peligro { background: transparent; color: #ff7b72; border: 1px solid #ff7b7255; }
+.btn:disabled { opacity: .5; cursor: wait; }
+.acciones { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+.aviso-ok { background: color-mix(in srgb, #3fb950 18%, transparent); border: 1px solid #3fb95066; padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; }
+.aviso-error { background: color-mix(in srgb, #ff7b72 15%, transparent); border: 1px solid #ff7b7266; padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; }
+.tabla { width: 100%; border-collapse: collapse; font-size: 15px; }
+.tabla th, .tabla td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+.tabla th { color: var(--humo); font-weight: 500; font-size: 13px; }
+.chip { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 99px; border: 1px solid var(--linea); color: var(--humo); }
+.chip.ok { border-color: #3fb95088; color: #3fb950; }
+.chip.ambar { border-color: var(--ambar); color: var(--ambar); }
+.cifras { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); margin-bottom: 18px; }
+@media (min-width: 800px) { .cifras { grid-template-columns: repeat(4, 1fr); } }
+.cifra { background: var(--grafito); border: 1px solid var(--linea); border-radius: 12px; padding: 16px; }
+.cifra b { display: block; font-size: 30px; font-weight: 600; }
+.cifra span { color: var(--humo); font-size: 13px; }
+.barras { display: flex; align-items: flex-end; gap: 3px; height: 140px; padding-top: 10px; }
+.barras div { flex: 1; background: var(--ambar); border-radius: 3px 3px 0 0; min-height: 2px; opacity: .85; }
+.fila-barra { display: grid; grid-template-columns: 1fr 60px; gap: 10px; align-items: center; padding: 6px 0; font-size: 14px; }
+.fila-barra .bar { height: 8px; background: color-mix(in srgb, var(--ambar) 25%, transparent); border-radius: 99px; overflow: hidden; margin-top: 4px; }
+.fila-barra .bar i { display: block; height: 100%; background: var(--ambar); }
+.fotos-admin { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.fotos-admin .tarjeta img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+.vista-previa { border-radius: 12px; overflow: hidden; border: 1px solid var(--linea); }
+.miniatura { width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }
+.subida { border: 1px dashed var(--linea); border-radius: 10px; padding: 14px; }
+.subida .estado { font-size: 13px; color: var(--humo); margin-top: 6px; }
+.login { min-height: 100vh; display: grid; place-items: center; padding: 20px; }
+.login form { width: min(380px, 100%); }
+details.tarjeta summary { cursor: pointer; font-weight: 600; }
+details.tarjeta[open] summary { margin-bottom: 14px; }

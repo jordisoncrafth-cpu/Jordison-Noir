@@ -88,17 +88,19 @@ export default async function EditarEntrada({
 
         <div className="tarjeta">
           <h2>Publicar</h2>
-          <div className="acciones">
-            <button className="btn sec" name="accion" value="borrador">Guardar borrador</button>
-            <button className="btn" name="accion" value="publicar">{publicada ? 'Guardar y mantener publicada' : 'Publicar ahora'}</button>
-          </div>
+          <label className="campo"><span>Al guardar, ¿qué quieres hacer?</span>
+            <select name="accion" defaultValue={publicada ? 'publicar' : 'borrador'}>
+              <option value="publicar">{publicada ? 'Mantenerla publicada' : 'Publicar ahora'}</option>
+              <option value="borrador">{publicada ? 'Despublicarla (volver a borrador)' : 'Guardar como borrador (solo tú la ves)'}</option>
+              <option value="programar">Programar para la fecha de abajo</option>
+            </select>
+          </label>
+          <label className="campo"><span>Fecha para programar (hora de México, solo si elegiste «Programar»)</span>
+            <input type="datetime-local" name="publicado_en" defaultValue={e.estado === 'programada' ? aLocalMx(e.publicado_en || null) : ''} />
+          </label>
           <div className="acciones" style={{ marginTop: 14 }}>
-            <label className="campo" style={{ margin: 0 }}><span>Programar para (hora de México)</span>
-              <input type="datetime-local" name="publicado_en" defaultValue={e.estado === 'programada' ? aLocalMx(e.publicado_en || null) : ''} />
-            </label>
-            <button className="btn sec" name="accion" value="programar" style={{ alignSelf: 'end' }}>Programar</button>
+            <button className="btn" type="submit">Guardar</button>
           </div>
-          {publicada ? <p className="ayuda" style={{ marginTop: 12 }}>Para despublicarla, pulsa «Guardar borrador».</p> : null}
         </div>
       </form>
 
